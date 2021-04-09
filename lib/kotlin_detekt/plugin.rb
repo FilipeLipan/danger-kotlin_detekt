@@ -77,7 +77,7 @@ module Danger
       unless File.exist?(report_file)
         require 'nokogiri'
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.checkstyle\ version "8.0"
+          xml.checkstyle('version' => '8.0')
         end
         report_file = File.new("#{report_file}", "w")
         report_file.puts(builder.to_xml)
