@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'oga'
+  spec.add_dependency 'nokogiri'
 
   spec.add_runtime_dependency 'danger-plugin-api', '~> 1.0'
 
