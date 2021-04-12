@@ -75,13 +75,13 @@ module Danger
       system "./gradlew #{gradle_task || 'detektCheck'}" unless skip_gradle_task
 
       unless File.exist?(report_file)
+        report_file = File.new("build/reports/detekt/detekt-checkstyle.xml", "w")
         require 'nokogiri'
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.checkstyle('version' => '8.0')
         end
-        new_file = File.new("#{report_file}", "w")
-        new_file.puts(builder.to_xml)
-        new_file.close
+        report_file.puts(builder.to_xml)
+        report_file.close
       end
 
       issues = read_issues_from_report
